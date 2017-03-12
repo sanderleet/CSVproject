@@ -1,11 +1,21 @@
 import csv
+
 # using nested lists, instead numPy
 
 
 teh_filepath = "simpleEX1.csv"
 
+
+def print_column(row):
+    for item in row:
+        print(item)
+
+
 def print_matrix(matrix):
-    pass
+    for row in matrix:
+        for item in row:
+            print(item, end=", ")
+        print()
 
 
 # From Matrix, return an array, of the Column with the Header name.
@@ -13,42 +23,33 @@ def print_matrix(matrix):
 
 def return_column_from_matrix_as_array(victim_matrix, victim_header):
     header_index = victim_matrix[0].index(victim_header)
-
-    print("Header index: {header}".format(header=header_index))
     returning_array = []
     for rows in victim_matrix:
         returning_array.append(rows[header_index])
     return returning_array
 
 
+def append_column_into_matrix(victim_matrix, victim_column):
+    buffer_matrix = victim_matrix
+    for index, row in enumerate(victim_column):
+        buffer_matrix[index].append(victim_column[index])
+    return buffer_matrix
+
+
 def return_column_from_csv(file_path, victim_header):
     pass
+
 
 # Create a matrix from .csv file
 
 
 def return_matrix_from_csv(file_path):
-    # check for file
-
     if file_path[-4:] != ".csv":
         print("File Error\n Are you sure '{File_path}' is correct? \n Press y or n ".format(File_path=file_path))
         if str(input("choice: ")) == "n":
             print("Ending")
             return
-    print("Good path")
-    matrix_rows = 0
-    matrix_columns = 0
-    print("Counting Rows and columns...")
-    scanning_rows = csv.reader(open(file_path))
 
-    for row in scanning_rows:
-        if matrix_rows == 1:
-            for items in row:
-                matrix_columns += 1
-        matrix_rows += 1
-
-    print("Rows: {rows} \nColumns: {columns}".format(rows=matrix_rows, columns=matrix_columns))
-    print("\nConstructing a matrix, a nested list...")
     scanning_rows = csv.reader(open(file_path))
     return_matrix = []
 
@@ -60,6 +61,16 @@ def return_matrix_from_csv(file_path):
     return return_matrix
 
 
-print(return_matrix_from_csv(teh_filepath))
-print(return_column_from_matrix_as_array(return_matrix_from_csv(teh_filepath), "pop2010"))
+def construct_new_matrix_by_columns(victim_matrix):
+    buffer_matrix = []
+    while True:
+        victim_header = str(input("Give Column Name: "))
+        victim_column = return_column_from_matrix_as_array(victim_matrix, victim_header)
+        buffer_matrix = append_column_into_matrix(buffer_matrix,victim_column)
+
+        if str(input("Add more Columns?\nYes or No: ")) == "no":
+            print("Ending")
+            return buffer_matrix
+
+
 
