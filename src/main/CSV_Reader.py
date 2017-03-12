@@ -12,13 +12,12 @@ def print_matrix(matrix):
 
 
 def return_column_from_matrix_as_array(victim_matrix, victim_header):
-    header_index = 0
-    for item in range(len(victim_matrix[0])):
-        if victim_matrix[0][item] == victim_header:
-            header_index = item
-    returning_array = len(victim_matrix)
-    for items in range(len(victim_matrix[header_index])):
-        returning_array[items] = victim_matrix[header_index][items]
+    header_index = victim_matrix[0].index(victim_header)
+
+    print("Header index: {header}".format(header=header_index))
+    returning_array = []
+    for rows in victim_matrix:
+        returning_array.append(rows[header_index])
     return returning_array
 
 
@@ -50,11 +49,17 @@ def return_matrix_from_csv(file_path):
 
     print("Rows: {rows} \nColumns: {columns}".format(rows=matrix_rows, columns=matrix_columns))
     print("\nConstructing a matrix, a nested list...")
+    scanning_rows = csv.reader(open(file_path))
+    return_matrix = []
+
+    for row in scanning_rows:
+        return_matrix_row = []
+        for item in row:
+            return_matrix_row.append(item)
+        return_matrix.append(return_matrix_row)
+    return return_matrix
 
 
-
-
-
-
-return_matrix_from_csv(teh_filepath)
+print(return_matrix_from_csv(teh_filepath))
+print(return_column_from_matrix_as_array(return_matrix_from_csv(teh_filepath), "pop2010"))
 
