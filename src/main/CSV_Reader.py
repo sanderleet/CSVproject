@@ -30,7 +30,11 @@ def return_column_from_matrix_as_array(victim_matrix, victim_header):
 
 
 def append_column_into_matrix(victim_matrix, victim_column):
-    buffer_matrix = victim_matrix
+    if victim_matrix == []:
+        buffer_matrix = [[]for item in range(len(victim_column))]
+    else:
+        buffer_matrix = victim_matrix
+    print(buffer_matrix)
     for index, row in enumerate(victim_column):
         buffer_matrix[index].append(victim_column[index])
     return buffer_matrix
@@ -71,6 +75,4 @@ def construct_new_matrix_by_columns(victim_matrix):
         if str(input("Add more Columns?\nYes or No: ")) == "no":
             print("Ending")
             return buffer_matrix
-
-
 
