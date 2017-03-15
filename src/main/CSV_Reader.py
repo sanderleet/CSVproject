@@ -67,5 +67,3 @@ def write_matrix_into_csv(victim_matrix, file_name):
     writer = csv.writer(new_file, delimiter=',')
     writer.writerows(victim_matrix)
     new_file.close()
-
-print(return_matrix_from_csv("simpleEX1.csv"))
