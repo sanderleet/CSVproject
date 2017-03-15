@@ -8,3 +8,5 @@ An application for viewing and manipulating .csv files
     behave. This Application can only handle files with a comma "," as a delimiter.
     
 This project is a small plugin Used in a bigger project of mine. and probably won't be updated after the due date (16.03).
+
+The basicGui is only used to open and view the files, and operations for using the .csv files should be written in another script.
