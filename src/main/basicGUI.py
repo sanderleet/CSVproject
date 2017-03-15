@@ -32,6 +32,8 @@ class Basic_GUI(Frame):
         self.quit()
 
     def open_a_file_to_matrix(self, filename):
+        for widget in Frame.winfo_children(self):
+            widget.destroy()
         an_array = return_matrix_from_csv(filename)
         for row_index, row in enumerate(an_array):
             for item_index, item in enumerate(row):
