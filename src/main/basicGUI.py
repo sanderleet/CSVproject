@@ -39,19 +39,9 @@ class Basic_GUI(Frame):
             for item_index, item in enumerate(row):
                 self.Matrice_label = Label(self)
                 self.Matrice_label["text"] = "{items}".format(items=item)
-                self.Matrice_label.grid(row=row_index, column=item_index + MATRIX_LABEL_POSITION)
+                self.Matrice_label.grid(row=row_index, column=item_index)
 
     def onOpen(self):
         filename = (filedialog.askopenfilename())
         self.open_a_file_to_matrix(filename)
 
-
-root = Tk()
-root.title("BasicGUI")
-root.geometry("400x400")
-MENU = 0
-MATRIX_LABEL_POSITION = 1
-app = Basic_GUI(root)
-
-
-root.mainloop()
