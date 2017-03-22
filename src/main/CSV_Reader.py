@@ -50,16 +50,13 @@ def return_matrix_from_csv(file_path):
     return return_matrix
 
 
-def construct_new_matrix_by_columns(victim_matrix):
+def construct_new_matrix_by_columns(victim_matrix, victim_header):
     buffer_matrix = []
-    while True:
-        victim_header = str(input("Give Column Name: "))
-        victim_column = return_column_from_matrix_as_array(victim_matrix, victim_header)
-        buffer_matrix = append_column_into_matrix(buffer_matrix, victim_column)
 
-        if str(input("Add more Columns?\nYes or No: ")) == "no":
-            print("Ending")
-        return buffer_matrix
+    victim_column = return_column_from_matrix_as_array(victim_matrix, victim_header)
+    buffer_matrix = append_column_into_matrix(buffer_matrix, victim_column)
+
+    return buffer_matrix
 
 
 def write_matrix_into_csv(victim_matrix, file_name):
@@ -67,3 +64,4 @@ def write_matrix_into_csv(victim_matrix, file_name):
     writer = csv.writer(new_file, delimiter=',')
     writer.writerows(victim_matrix)
     new_file.close()
+
