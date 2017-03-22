@@ -6,7 +6,7 @@
     behave. This Application can only handle files with a comma "," as a delimiter.
     """
 from tkinter import *
-from basicGUI import *
+from Basic_GUI import *
 
 def main():
     root = Tk()
